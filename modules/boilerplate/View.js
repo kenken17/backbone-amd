@@ -2,21 +2,15 @@ define([
     'Base',
     'jquery',
     'backbone',
-    'modules/boilerplate/Model',
     'text!modules/boilerplate/style.less'
-], function(Base, $, Backbone, Model, style) {
+], function (Base, $, Backbone, style) {
 
-    var View = Base.extend({
-        initialize: function() {
+    var View = Backbone.View.extend({
+        initialize: function () {
             console.log('This is a View.');
         },
-        render: function(opts) {
-            var MyModel = new Model();
-
-            opts = opts || {};
-            opts.style = style;
-
-            View.__super__.render.call(this, opts);
+        render: function (opts) {
+            return this;
         }
     });
 

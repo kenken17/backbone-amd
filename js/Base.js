@@ -1,11 +1,12 @@
 define([
-    'jquery'
-], function($) {
+    'jquery',
+    'ViewModel'
+], function($, VM) {
     var parser = new(less.Parser);
     console.log('LESS parser initiated.');
 
-    var Base = {
-        parse: function(opts) {
+    var Base = function () {
+        var parse = function(opts) {
             parser.parse(opts.style, function (err, tree) {
                 if (err) { return console.error(err); }
 
@@ -16,7 +17,12 @@ define([
                     $('style').append(tree.toCSS());
                 }
             });
-        }
+        };
+
+        var getVideModel = function() {
+            return new VM();
+        };
+
     };
 
     return Base;
